@@ -1,0 +1,54 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color:rgb(152, 152, 179);
+}
+
+.container {
+  display:flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: center;
+  height:100vh;
+}
+
+.title {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  border:2px solid purple;
+  padding:10px;
+}
+
+.figures {
+  font-size:30px;
+  font-family:monospace;
+}
+.micro-sec{
+  font-family:monospace;
+  font-size:16px;
+}
+
+.laps, .stop, .play, .reset {
+  border:none;
+  width:55px;
+  border-radius:3px;
+  height:30px;
+  padding:6px;
+  font-family:serif;
+  font-size:18px;
+  font-weight:600;
+}
+
+#lap-id {
+  font-size:15px;
+  font-family:monospace;
+}
+
+.lapses {
+  height:40vh;
+}
