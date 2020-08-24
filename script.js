@@ -49,31 +49,13 @@ function addSec() {
   adder;
 }
 
-function clearer() {
-  let reset=document.querySelector(".reset");
-  reset.addEventListener("click", ()=>{
-    stopper();
-    microSecDisplay.textContent=0;
-    secDisplay.textContent=0;
-    minDisplay.textContent=0;
-    hourDisplay.textContent=0;
-    lapseDisplay.innerHTML= "";
-    lapTime={
-      min:0,
-      sec:0,
-      hr:0,
-      milliSec:0
-    };
-  })
-}
-clearer();
-
 
 let lapTime={milliSec:0,sec:0,min:0,hr:0};
 let lapMinni;
-  let lapSec;
-  let lapMin;
-  let lapHour;
+let lapSec;
+let lapMin;
+let lapHour;
+  
 function lapser() {  
   if (micSecTimer < lapTime.milliSec) {
     secTimer--;
@@ -115,7 +97,7 @@ function lapser() {
   lapMinni=(lapMinni< 10) ? "0" + lapMinni: lapMinni;
   
     let divDisplay=document.createElement("DIV");
-    let textDisplay=document.createTextNode(`${lapHour}:${lapMin}:${lapSec}:${lapMinni} -  ${hourTimer}:${minTimer}:${secTimer}:${micSecTimer}`);
+    let textDisplay=document.createTextNode(`${lapHour}:${lapMin}:${lapSec}:${lapMinni}  -   ${hourDisplay.textContent}:${minDisplay.textContent}:${secDisplay.textContent}:${microSecDisplay.textContent}`);
     divDisplay.setAttribute("id", "lap-id");
     divDisplay.appendChild(textDisplay);
     lapseDisplay.appendChild(divDisplay);  
@@ -128,8 +110,36 @@ stop.addEventListener("click", stopper);
 
 function stopper() {
   clearInterval(adder);
-  micSecTimer=lapMinni;
-  secTimer=lapSec;
-  minTimer=lapMin;
-  hourTimer=lapHour;
+  micSecTimer=micSecTimer;
+  secTimer=secTimer;
+  minTimer=minTimer;
+  hourTimer=hourTimer;
+
+  lapTime={
+    min:lapTime.min,
+    sec:lapTime.sec,
+    hr:lapTime.hr,
+    milliSec:lapTime.milliSec
+  };
 }
+
+
+function clearer() {
+  let reset=document.querySelector(".reset");
+  reset.addEventListener("click", ()=>{
+    stopper();
+
+    microSecDisplay.textContent="00";
+    secDisplay.textContent="00";
+    minDisplay.textContent="00";
+    hourDisplay.textContent="00";
+    lapseDisplay.innerHTML= "";
+    lapTime={
+      min:0,
+      sec:0,
+      hr:0,
+      milliSec:0
+    };
+  })
+}
+clearer();
